@@ -99,8 +99,6 @@ namespace IhkObserver.WpfResultViewer.ViewModels
         {
             for (int i = 0; i < trys; i++)
             {
-                _observer.GetLoginInformations();
-
                 Bitmap map = _observer.GetLoginCaptcha();
                 Captcha = BitmapConversion.BitmapToBitmapSource(map);
 
@@ -125,6 +123,8 @@ namespace IhkObserver.WpfResultViewer.ViewModels
         private void ExecuteLoadResults()
         {
             _observer.AddSessionId();
+
+            _observer.GetLoginInformations();
 
             TryLogin(5);
         }
